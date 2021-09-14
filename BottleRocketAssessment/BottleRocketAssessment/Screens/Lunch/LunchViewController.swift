@@ -8,15 +8,17 @@
 import UIKit
 
 class LunchViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -24,6 +26,9 @@ class LunchViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
+
+// MARK: - Extensions
+
