@@ -12,13 +12,30 @@ class LunchViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Properties
+    var restaurants: [Restaurant]?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(RestaurantCollectionViewCell.nib(), forCellWithReuseIdentifier: RestaurantCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        RestaurantController.fetchRestaurants { result in
+            switch result {
+            case .success(let restaurants):
+                self.restaurants = restaurants
+                for restaurant in restaurants {
+                    print(restaurant.name)
+                }
+            case .failure(let error):
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
     }
     
     // MARK: - Navigation
@@ -37,7 +54,11 @@ extension LunchViewController: UICollectionViewDelegate {
 
 extension LunchViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        if self.restaurants != nil {
+            return restaurants!.count
+        } else {
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

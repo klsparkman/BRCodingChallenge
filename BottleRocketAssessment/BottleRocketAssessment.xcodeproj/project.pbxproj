@@ -22,6 +22,7 @@
 		35F75DE426F17C13009E8C97 /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F75DE226F17C13009E8C97 /* RestaurantCollectionViewCell.swift */; };
 		35F75DE526F17C13009E8C97 /* RestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F75DE326F17C13009E8C97 /* RestaurantCollectionViewCell.xib */; };
 		35F75DE726F17FEF009E8C97 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F75DE626F17FEF009E8C97 /* RestaurantController.swift */; };
+		35F75DE926F18398009E8C97 /* RestaurantError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F75DE826F18398009E8C97 /* RestaurantError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		35F75DE226F17C13009E8C97 /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
 		35F75DE326F17C13009E8C97 /* RestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
 		35F75DE626F17FEF009E8C97 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
+		35F75DE826F18398009E8C97 /* RestaurantError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				35F75DD426F04116009E8C97 /* Constants */,
-				35F75DD326F040F0009E8C97 /* Extensions */,
+				35F75DD326F040F0009E8C97 /* Helpers & Extensions */,
 				35F75DD226F040EA009E8C97 /* Controllers */,
 				35F75DD126F040E5009E8C97 /* Models */,
 				35F75DCD26F03D38009E8C97 /* Storyboards */,
@@ -223,11 +225,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		35F75DD326F040F0009E8C97 /* Extensions */ = {
+		35F75DD326F040F0009E8C97 /* Helpers & Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				35F75DE826F18398009E8C97 /* RestaurantError.swift */,
 			);
-			path = Extensions;
+			path = "Helpers & Extensions";
 			sourceTree = "<group>";
 		};
 		35F75DD426F04116009E8C97 /* Constants */ = {
@@ -383,6 +386,7 @@
 				35F75DDF26F063DC009E8C97 /* Restaurant.swift in Sources */,
 				35F75DD626F0436A009E8C97 /* MainTabBarController.swift in Sources */,
 				35F75DDD26F0469E009E8C97 /* RestaurantDetailViewController.swift in Sources */,
+				35F75DE926F18398009E8C97 /* RestaurantError.swift in Sources */,
 				35F75DD926F04670009E8C97 /* InternetsViewController.swift in Sources */,
 				35F75DE726F17FEF009E8C97 /* RestaurantController.swift in Sources */,
 			);
