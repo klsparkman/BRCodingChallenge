@@ -12,6 +12,10 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
     
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    
+    @IBOutlet weak var restaurantCategoryLabel: UILabel!
+    
     // MARK: - Properties
     static let identifier = "RestaurantCollectionViewCell"
     
@@ -23,6 +27,7 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     // MARK: - Helper Functions
     func configure(with restaurant: Restaurant) {
         fetchImagesForRestaurant(with: restaurant)
+        updateUI(with: restaurant)
     }
     
     func fetchImagesForRestaurant(with restaurant: Restaurant) {
@@ -35,6 +40,13 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
             case .failure(let error):
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
             }
+        }
+    }
+    
+    func updateUI(with restaurant: Restaurant) {
+        DispatchQueue.main.async {
+            self.restaurantNameLabel.text = restaurant.name
+            self.restaurantCategoryLabel.text = restaurant.category
         }
     }
     
