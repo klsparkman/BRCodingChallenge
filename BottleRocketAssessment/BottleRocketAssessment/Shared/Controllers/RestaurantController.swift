@@ -5,7 +5,7 @@
 //  Created by Kelsey Sparkman on 9/14/21.
 //
 
-import Foundation
+import UIKit
 
 class RestaurantController {
         
@@ -30,6 +30,27 @@ class RestaurantController {
             } catch {
                 return completion(.failure(.unableToDecode))
             }
+        }.resume()
+    }
+    
+    // MARK: - Fetch restaurant images
+    static func fetchRestaurantImages(restaurant: Restaurant, completion: @escaping (Result<UIImage, RestaurantError>) -> Void) {
+        
+        guard let imageURL = URL(string: restaurant.backgroundImageURL) else {return}
+        
+        URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            if let error = error {
+                completion(.failure(.thrownError(error)))
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                print("RESTAURANT IMAGE STATUS CODE: \(response.statusCode)")
+            }
+            
+            guard let data = data else {return completion(.failure(.noData))}
+            
+            guard let image = UIImage(data: data) else {return completion(.failure(.unableToDecode))}
+            completion(.success(image))
         }.resume()
     }
 }

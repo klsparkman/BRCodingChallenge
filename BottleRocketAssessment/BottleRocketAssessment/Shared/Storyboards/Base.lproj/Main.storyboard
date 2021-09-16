@@ -31,7 +31,7 @@
             <objects>
                 <viewController id="jkJ-rh-jpT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wSz-xr-7oD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Yfv-Rd-Eg2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -67,6 +67,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <segue destination="jkJ-rh-jpT" kind="showDetail" id="kdX-pU-U93"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -109,6 +112,7 @@
         <scene sceneID="U8r-N8-lO4">
             <objects>
                 <tabBarController id="LVb-Hp-ROg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FLz-8s-nUN"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N8e-xF-jeM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

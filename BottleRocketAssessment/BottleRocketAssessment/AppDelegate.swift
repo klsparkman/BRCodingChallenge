@@ -10,11 +10,41 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+//    static let shared = AppDelegate()
+//    var restaurants: [Restaurant] = []
+//    var restaurantImages: [UIImage] = []
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        func fetchRestaurants() {
+//            RestaurantController.fetchRestaurants { result in
+//                switch result {
+//                case .success(let restaurants):
+//                    self.restaurants = restaurants
+//                    func fetchRestaurantImages(restaurants: [Restaurant]) {
+//                        for restaurant in restaurants {
+//                            RestaurantController.fetchRestaurantImages(restaurant: restaurant) { result in
+//                                switch result {
+//                                case .success(let image):
+//                                    self.restaurantImages.append(image)
+////                                    DispatchQueue.main.async {
+////                                        self.collectionView.reloadData()
+////                                    }
+//                                case .failure(let error):
+//                                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+//                                }
+//                            }
+//                        }
+//                    }
+//                case .failure(let error):
+//                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+//                }
+//            }
+//        }
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle

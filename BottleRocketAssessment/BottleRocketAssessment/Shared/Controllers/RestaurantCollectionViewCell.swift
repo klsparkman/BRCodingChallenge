@@ -21,8 +21,21 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Helper Functions
-    func configure(with image: UIImage) {
-        restaurantImageView.image = image
+    func configure(with restaurant: Restaurant) {
+        fetchImagesForRestaurant(with: restaurant)
+    }
+    
+    func fetchImagesForRestaurant(with restaurant: Restaurant) {
+        RestaurantController.fetchRestaurantImages(restaurant: restaurant) { result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.restaurantImageView.image = image
+                }
+            case .failure(let error):
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
     }
     
     static func nib() -> UINib {
