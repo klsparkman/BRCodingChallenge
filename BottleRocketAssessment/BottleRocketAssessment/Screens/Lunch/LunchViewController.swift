@@ -26,11 +26,11 @@ class LunchViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         collectionView.dataSource = self
         collectionView.delegate = self
-        fetchRestaurantsAndImages()
+        fetchRestaurants()
     }
     
     // MARK: - Helper Functions
-    func fetchRestaurantsAndImages() {
+    func fetchRestaurants() {
         RestaurantController.fetchRestaurants { result in
             switch result {
             case .success(let restaurants):
