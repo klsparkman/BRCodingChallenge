@@ -15,6 +15,7 @@ class LunchViewController: UIViewController {
     // MARK: - Properties
     var restaurants: [Restaurant] = []
     var restaurantImages: [UIImage] = []
+    var selectedRestaurant: Restaurant?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -42,15 +43,21 @@ class LunchViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? RestaurantDetailViewController,
+           let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
+            destination.restaurant = self.restaurants[indexPath.row]
+        }
+    }
 }
 
 // MARK: - Extensions
-// Pick up interacttions with the cells
 extension LunchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        print("You tapped me!")
+        self.selectedRestaurant = self.restaurants[indexPath.row]
+        performSegue(withIdentifier: "toDetailVC", sender: self)
     }
 }
 
@@ -68,13 +75,10 @@ extension LunchViewController: UICollectionViewDataSource {
     }
 }
 
-// lets us specify margin and padding
-extension LunchViewController: UICollectionViewDelegateFlowLayout{
+extension LunchViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 300, height: 300)
         return CGSize(width: view.frame.width, height: 180)
     }
-    
 }
 

@@ -3,20 +3,27 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="cea-AQ-pUq">
             <objects>
                 <navigationController id="beF-kJ-ilh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Miw-bW-F1r"/>
+                    <tabBarItem key="tabBarItem" image="tab_lunch" selectedImage="tab_lunch" id="Miw-bW-F1r">
+                        <color key="badgeColor" name="fontColor"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qT-i9-6Xr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="titleBarColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="fontColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="00L-55-kAd" kind="relationship" relationship="rootViewController" id="bBc-LE-NYC"/>
@@ -29,20 +36,43 @@
         <!--Lunch Tyme-->
         <scene sceneID="YRo-Xj-LcA">
             <objects>
-                <viewController id="jkJ-rh-jpT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailVC" id="jkJ-rh-jpT" customClass="RestaurantDetailViewController" customModule="BottleRocketAssessment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wSz-xr-7oD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sa-NZ-xFX">
+                                <rect key="frame" x="30" y="423" width="354" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XiN-91-A89"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Yfv-Rd-Eg2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8sa-NZ-xFX" firstAttribute="leading" secondItem="Yfv-Rd-Eg2" secondAttribute="leading" constant="30" id="cmE-pH-ZUW"/>
+                            <constraint firstItem="Yfv-Rd-Eg2" firstAttribute="trailing" secondItem="8sa-NZ-xFX" secondAttribute="trailing" constant="30" id="kUb-UB-50d"/>
+                            <constraint firstItem="8sa-NZ-xFX" firstAttribute="centerY" secondItem="wSz-xr-7oD" secondAttribute="centerY" id="xh9-lO-pkW"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Lunch Tyme" id="htw-Oj-ufQ"/>
+                    <navigationItem key="navigationItem" title="Lunch Tyme" id="htw-Oj-ufQ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon_map" id="ftn-Yv-i4t">
+                            <color key="tintColor" name="fontColor"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="restaurantLabel" destination="8sa-NZ-xFX" id="X7e-zy-WNE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kD-cV-FFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-652" y="2082"/>
         </scene>
-        <!--Lunch View Controller-->
+        <!--Lunch Tyme-->
         <scene sceneID="fX2-ko-afj">
             <objects>
                 <viewController id="00L-55-kAd" customClass="LunchViewController" customModule="BottleRocketAssessment" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +98,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <segue destination="jkJ-rh-jpT" kind="showDetail" id="kdX-pU-U93"/>
+                                            <segue destination="jkJ-rh-jpT" kind="show" identifier="toDetailVC" id="XaH-LD-vOV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -83,7 +113,11 @@
                             <constraint firstItem="8Qk-uT-FEJ" firstAttribute="leading" secondItem="fEF-mQ-f7a" secondAttribute="leading" id="v53-Mn-K9N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Fbg-PV-xQe"/>
+                    <navigationItem key="navigationItem" title="Lunch Tyme" id="Fbg-PV-xQe">
+                        <barButtonItem key="rightBarButtonItem" image="icon_map" id="CpW-zF-KUA">
+                            <color key="tintColor" name="fontColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="8Qk-uT-FEJ" id="PQs-IG-kl8"/>
                     </connections>
@@ -117,6 +151,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="tabBarBackgroung"/>
+                        <color key="selectedImageTintColor" name="fontColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="beF-kJ-ilh" kind="relationship" relationship="viewControllers" id="Ydj-fw-JyY"/>
@@ -131,7 +167,9 @@
         <scene sceneID="z1D-xI-v0G">
             <objects>
                 <navigationController id="9iG-sy-upU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="80o-Mv-zAf"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="tab_internets" selectedImage="tab_internets" id="80o-Mv-zAf">
+                        <color key="badgeColor" name="fontColor"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p08-Hf-0fd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -146,6 +184,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_map" width="30" height="30"/>
+        <image name="tab_internets" width="18" height="22"/>
+        <image name="tab_lunch" width="24" height="24"/>
+        <namedColor name="fontColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tabBarBackgroung">
+            <color red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="titleBarColor">
+            <color red="0.2627450980392157" green="0.90980392156862744" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
