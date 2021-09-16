@@ -26,6 +26,8 @@ struct Restaurant: Codable {
     
     struct Location: Codable {
         let formattedAddress: [String]
+        let lat: Double
+        let lng: Double
     }
 }
 

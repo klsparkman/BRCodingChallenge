@@ -123,6 +123,7 @@
                         <outlet property="addressLabel" destination="zqG-TQ-y2w" id="54m-lD-aOz"/>
                         <outlet property="phoneNumberLabel" destination="h1E-7m-2xP" id="hv2-Ni-GbW"/>
                         <outlet property="restaurantCategoryLabel" destination="Hln-lT-xzG" id="PQy-Yo-cqF"/>
+                        <outlet property="restaurantMapView" destination="jxh-aM-etH" id="DU4-tH-svy"/>
                         <outlet property="restaurantNameLabel" destination="SXv-zB-xgo" id="yMV-q6-3V4"/>
                         <outlet property="twitterLabel" destination="Dsm-5N-Qpx" id="1Hl-q1-5k8"/>
                     </connections>
