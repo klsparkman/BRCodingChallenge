@@ -186,10 +186,10 @@
             </objects>
             <point key="canvasLocation" x="-652" y="1402"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="0ec-hU-J7W">
             <objects>
-                <viewController id="L8l-Tr-57q" sceneMemberID="viewController">
+                <viewController id="L8l-Tr-57q" customClass="WebViewController" customModule="BottleRocketAssessment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ebd-Uj-3om">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
