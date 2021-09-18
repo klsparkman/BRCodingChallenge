@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35AA577B26F4DC4300646777 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA577A26F4DC4200646777 /* WebViewController.swift */; };
+		35AA577D26F5115100646777 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AA577C26F5115100646777 /* Constants.swift */; };
 		35F75D9B26F03A14009E8C97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F75D9A26F03A14009E8C97 /* AppDelegate.swift */; };
 		35F75D9D26F03A14009E8C97 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F75D9C26F03A14009E8C97 /* SceneDelegate.swift */; };
 		35F75DA226F03A14009E8C97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F75DA026F03A14009E8C97 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		35AA577A26F4DC4200646777 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		35AA577C26F5115100646777 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		35F75D9726F03A14009E8C97 /* BottleRocketAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottleRocketAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F75D9A26F03A14009E8C97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F75D9C26F03A14009E8C97 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		35F75DD426F04116009E8C97 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				35AA577C26F5115100646777 /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				35F75DE926F18398009E8C97 /* RestaurantError.swift in Sources */,
 				35F75DD926F04670009E8C97 /* InternetsViewController.swift in Sources */,
 				35F75DE726F17FEF009E8C97 /* RestaurantController.swift in Sources */,
+				35AA577D26F5115100646777 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

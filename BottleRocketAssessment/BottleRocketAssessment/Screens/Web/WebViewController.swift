@@ -29,47 +29,7 @@ class WebViewController: UIViewController, WKUIDelegate {
         setupNavBar()
     }
     
-    // MARK: - Programmatic properties
-    lazy var webView: WKWebView = {
-        let webConfiguration = WKWebViewConfiguration()
-        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        return webView
-    }()
-    
-    let forwardBarItem = UIBarButtonItem(image: UIImage(named: "ic_webForward"), style: .plain, target: self, action: #selector(forwardAction))
-    
-    let backBarItem = UIBarButtonItem(image: UIImage(named: "ic_webBack"), style: .plain, target: self, action: #selector(backAction))
-    
-    let refreshBarItem = UIBarButtonItem(image: UIImage(named: "ic_webRefresh"), style: .plain, target: self, action: #selector(refreshAction))
-    
-    // MARK: - Helper Functions
-    func setupUI() {
-        self.view.backgroundColor = .white
-        self.view.addSubview(webView)
-        
-        NSLayoutConstraint.activate([
-            webView.topAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            webView.leftAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-            webView.bottomAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            webView.rightAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
-        ])
-    }
-    
-    func setupNavItems() {
-        self.navigationItem.leftBarButtonItems = [backBarItem, refreshBarItem, forwardBarItem]
-    }
-    
-    func setupNavBar() {
-        self.navigationController?.navigationBar.barTintColor = self.bannerGreen
-        self.navigationController?.navigationBar.tintColor = self.textWhite
-    }
-    
+    // MARK: - Actions
     @objc func forwardAction() {
         print("Forward button tapped")
         if webView.canGoForward {
@@ -87,5 +47,48 @@ class WebViewController: UIViewController, WKUIDelegate {
     @objc func refreshAction() {
         print("Refresh button tapped")
         webView.reload()
+    }
+    
+    // MARK: - Programmatic properties
+    lazy var webView: WKWebView = {
+        let webConfiguration = WKWebViewConfiguration()
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
+    }()
+    
+    let forwardBarItem = UIBarButtonItem(image: UIImage(named: "ic_webForward"), style: .plain, target: self, action: #selector(forwardAction))
+    
+    let backBarItem = UIBarButtonItem(image: UIImage(named: "ic_webBack"), style: .plain, target: self, action: #selector(backAction))
+    
+    let refreshBarItem = UIBarButtonItem(image: UIImage(named: "ic_webRefresh"), style: .plain, target: self, action: #selector(refreshAction))
+    
+    let testBackButton = UIBarButtonItem(title: "Test Back", style: .plain, target: self, action: #selector(backAction))
+    
+    // MARK: - Helper Functions
+    private func setupUI() {
+        view.backgroundColor = .white
+        view.addSubview(webView)
+        
+        NSLayoutConstraint.activate([
+            webView.topAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            webView.leftAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+            webView.bottomAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            webView.rightAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+        ])
+    }
+    
+    private func setupNavItems() {
+        navigationItem.leftBarButtonItems = [backBarItem, refreshBarItem, forwardBarItem]
+    }
+    
+    private func setupNavBar() {
+        navigationController?.navigationBar.barTintColor = self.bannerGreen
+        navigationController?.navigationBar.tintColor = self.textWhite
     }
 }

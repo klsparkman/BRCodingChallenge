@@ -46,7 +46,9 @@ class RestaurantDetailViewController: UIViewController {
                     twitterLabel.text = "Facebook: \( restaurant.contact?.facebookUsername ?? "")"
                 }
             } else {
+                phoneNumberLabel.text = "No phone number available"
                 twitterLabel.text = "No social media account available"
+                
             }
         }
     }

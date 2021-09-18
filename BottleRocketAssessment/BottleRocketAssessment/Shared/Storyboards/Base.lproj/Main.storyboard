@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--lunch-->
         <scene sceneID="cea-AQ-pUq">
             <objects>
                 <navigationController id="beF-kJ-ilh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="tab_lunch" selectedImage="tab_lunch" id="Miw-bW-F1r">
+                    <tabBarItem key="tabBarItem" title="lunch" image="tab_lunch" selectedImage="tab_lunch" id="Miw-bW-F1r">
                         <color key="badgeColor" name="fontColor"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2qT-i9-6Xr">
@@ -223,11 +223,11 @@
             </objects>
             <point key="canvasLocation" x="-240" y="24"/>
         </scene>
-        <!--Item-->
+        <!--internets-->
         <scene sceneID="z1D-xI-v0G">
             <objects>
                 <navigationController id="9iG-sy-upU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tab_internets" selectedImage="tab_internets" id="80o-Mv-zAf">
+                    <tabBarItem key="tabBarItem" title="internets" image="tab_internets" selectedImage="tab_internets" id="80o-Mv-zAf">
                         <color key="badgeColor" name="fontColor"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p08-Hf-0fd">
