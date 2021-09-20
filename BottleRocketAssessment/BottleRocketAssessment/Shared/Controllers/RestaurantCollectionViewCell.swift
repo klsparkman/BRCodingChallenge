@@ -22,6 +22,21 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     // MARK: - Private
     
     private func updateUI(with restaurant: Restaurant) {
+//
+//        let view = UIView(frame: restaurantImageView.frame)
+//        let gradient = CAGradientLayer()
+//        gradient.frame = view.frame
+//
+//        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+//        gradient.
+//        gradient.locations = [0.0, 1.0]
+//
+//        view.layer.insertSublayer(gradient, at: 0)
+//
+//        restaurantImageView.addSubview(view)
+//
+//        restaurantImageView.bringSubviewToFront(view)
+        
         DispatchQueue.main.async {
             self.restaurantNameLabel.text = restaurant.name
             self.restaurantCategoryLabel.text = restaurant.category
