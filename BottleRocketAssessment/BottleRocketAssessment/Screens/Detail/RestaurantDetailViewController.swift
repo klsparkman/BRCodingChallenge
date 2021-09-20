@@ -21,6 +21,7 @@ class RestaurantDetailViewController: UIViewController {
     // MARK: - Properties
     var restaurant: Restaurant?
     let annotation = MKPointAnnotation()
+    var restaurantArray: [Restaurant]?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -48,7 +49,15 @@ class RestaurantDetailViewController: UIViewController {
             } else {
                 phoneNumberLabel.text = "No phone number available"
                 twitterLabel.text = "No social media account available"
-                
+            }
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapViewFromDetail" {
+            if let destination = segue.destination as? MapViewController {
+                destination.restaurants = self.restaurantArray
             }
         }
     }

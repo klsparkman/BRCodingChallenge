@@ -9,4 +9,7 @@ import Foundation
 
 struct Constants {
     static let imageCache = "ImageCache"
+    static let name = "Name"
+    static let latitude = "Latitude"
+    static let longitude = "Longitude"
 }

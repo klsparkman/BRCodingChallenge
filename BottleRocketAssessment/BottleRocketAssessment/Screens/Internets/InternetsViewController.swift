@@ -6,24 +6,90 @@
 //
 
 import UIKit
+import WebKit
 
-class InternetsViewController: UIViewController {
+class InternetsViewController: UIViewController, WKUIDelegate {
 
+    // MARK: - Properties
+    let textWhite = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1)
+    let bannerGreen = UIColor(red: 67/255.0, green: 232/255.0, blue: 149/255.0, alpha: 1)
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
+        setupNavItems()
+        guard let myURL = URL(string: "https://www.bottlerocketstudios.com/") else {return}
+        let myRequest = URLRequest(url: myURL)
+        webView.load(myRequest)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavBar()
     }
-    */
+    
+    // MARK: - Actions
+    @objc func forwardAction() {
+        print("Forward button tapped")
+        if webView.canGoForward {
+            webView.goForward()
+        }
+    }
+    
+    @objc func backAction() {
+        print("Back button tapped")
+        if webView.canGoBack {
+            webView.goBack()
+        }
+    }
+    
+    @objc func refreshAction() {
+        print("Refresh button tapped")
+        webView.reload()
+    }
+    
+    // MARK: - Programmatic properties
+    lazy var webView: WKWebView = {
+        let webConfiguration = WKWebViewConfiguration()
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
+    }()
+    
+    let forwardBarItem = UIBarButtonItem(image: UIImage(named: "ic_webForward"), style: .plain, target: self, action: #selector(forwardAction))
+    
+    let backBarItem = UIBarButtonItem(image: UIImage(named: "ic_webBack"), style: .plain, target: self, action: #selector(backAction))
+    
+    let refreshBarItem = UIBarButtonItem(image: UIImage(named: "ic_webRefresh"), style: .plain, target: self, action: #selector(refreshAction))
+    
+    let testBackButton = UIBarButtonItem(title: "Test Back", style: .plain, target: self, action: #selector(backAction))
+    
+    // MARK: - Helper Functions
+    private func setupUI() {
+        view.backgroundColor = .white
+        view.addSubview(webView)
+        
+        NSLayoutConstraint.activate([
+            webView.topAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            webView.leftAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+            webView.bottomAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            webView.rightAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+        ])
+    }
+    
+    private func setupNavItems() {
+        navigationItem.leftBarButtonItems = [backBarItem, refreshBarItem, forwardBarItem]
+    }
+    
+    private func setupNavBar() {
+        navigationController?.navigationBar.barTintColor = self.bannerGreen
+        navigationController?.navigationBar.tintColor = self.textWhite
+    }
 
 }

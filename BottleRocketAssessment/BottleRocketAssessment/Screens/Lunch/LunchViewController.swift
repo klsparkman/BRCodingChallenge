@@ -44,11 +44,25 @@ class LunchViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? RestaurantDetailViewController,
-           let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
-            destination.restaurant = self.restaurants[indexPath.row]
+        if segue.identifier == "toDetailVC" {
+            if let destination = segue.destination as? RestaurantDetailViewController,
+               let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
+                destination.restaurant = self.restaurants[indexPath.row]
+                destination.restaurantArray = self.restaurants
+            }
+        } else {
+            if segue.identifier == "toMapViewFromList" {
+                if let destination = segue.destination as? MapViewController {
+                    destination.restaurants = self.restaurants
+                }
+            }
         }
+    }
+    
+    // MARK: - Actions
+    @IBAction func mapButtonTapped(_ sender: Any) {
     }
 }
 
@@ -78,8 +92,12 @@ extension LunchViewController: UICollectionViewDataSource {
 extension LunchViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: view.frame.width, height: 180)
+        if view.frame.width > 1000 {
+            return CGSize(width: view.frame.width / 2, height: 180)
+        } else {
+            return CGSize(width: view.frame.width, height: 180)
+        }
     }
 }
+
 

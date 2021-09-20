@@ -11,9 +11,7 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
-    
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    
     @IBOutlet weak var restaurantCategoryLabel: UILabel!
     
     // MARK: - Properties
