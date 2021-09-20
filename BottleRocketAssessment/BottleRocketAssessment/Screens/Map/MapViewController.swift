@@ -27,6 +27,12 @@ class MapViewController: UIViewController {
         createAnnotationLocations()
     }
     
+    // MARK: - Actions
+    
+    @IBAction func exitButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Private
     
     private func createAnnotationLocations() {

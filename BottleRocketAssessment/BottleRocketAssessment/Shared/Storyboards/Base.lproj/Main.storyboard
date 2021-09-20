@@ -21,14 +21,26 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-6o-Ovu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL6-lA-j4R">
+                                <rect key="frame" x="361" y="20" width="33" height="32.5"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="exitButtonTapped:" destination="ewC-jE-n5g" eventType="touchUpInside" id="PGj-4B-eH4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kxb-em-Fpd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Kxb-em-Fpd" firstAttribute="trailing" secondItem="bzc-6o-Ovu" secondAttribute="trailing" id="1ZG-zY-cDF"/>
+                            <constraint firstItem="gL6-lA-j4R" firstAttribute="trailing" secondItem="bzc-6o-Ovu" secondAttribute="trailing" constant="-20" id="3ba-cM-Vhe"/>
                             <constraint firstItem="bzc-6o-Ovu" firstAttribute="top" secondItem="Kxb-em-Fpd" secondAttribute="top" id="7Qa-QC-PZD"/>
+                            <constraint firstItem="gL6-lA-j4R" firstAttribute="top" secondItem="bzc-6o-Ovu" secondAttribute="top" constant="20" id="Anh-hT-cxl"/>
+                            <constraint firstItem="gL6-lA-j4R" firstAttribute="height" secondItem="bzc-6o-Ovu" secondAttribute="height" multiplier="0.04" id="Ary-h4-SaZ"/>
                             <constraint firstItem="Kxb-em-Fpd" firstAttribute="bottom" secondItem="bzc-6o-Ovu" secondAttribute="bottom" id="Vqj-z7-Pc9"/>
                             <constraint firstItem="bzc-6o-Ovu" firstAttribute="leading" secondItem="Kxb-em-Fpd" secondAttribute="leading" id="gf8-Ml-ynY"/>
+                            <constraint firstItem="gL6-lA-j4R" firstAttribute="width" secondItem="bzc-6o-Ovu" secondAttribute="width" multiplier="0.08" id="zez-x4-2vo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -284,6 +296,7 @@
         <segue reference="ug0-NP-BZr"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="ic_close" width="19" height="18"/>
         <image name="icon_map" width="30" height="30"/>
         <image name="tab_internets" width="18" height="22"/>
         <image name="tab_lunch" width="24" height="24"/>
