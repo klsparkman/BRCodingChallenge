@@ -10,25 +10,25 @@ import UIKit
 class RestaurantCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantCategoryLabel: UILabel!
     
     // MARK: - Properties
+    
     static let identifier = "RestaurantCollectionViewCell"
     
-    // MARK: - Lifecycle
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - Private
+    
+    private func updateUI(with restaurant: Restaurant) {
+        DispatchQueue.main.async {
+            self.restaurantNameLabel.text = restaurant.name
+            self.restaurantCategoryLabel.text = restaurant.category
+        }
     }
     
-    // MARK: - Helper Functions
-    func configure(with restaurant: Restaurant) {
-        fetchImagesForRestaurant(with: restaurant)
-        updateUI(with: restaurant)
-    }
-    
-    func fetchImagesForRestaurant(with restaurant: Restaurant) {
+    private func fetchImagesForRestaurant(with restaurant: Restaurant) {
         RestaurantController.fetchRestaurantImages(restaurant: restaurant) { result in
             switch result {
             case .success(let image):
@@ -41,11 +41,10 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func updateUI(with restaurant: Restaurant) {
-        DispatchQueue.main.async {
-            self.restaurantNameLabel.text = restaurant.name
-            self.restaurantCategoryLabel.text = restaurant.category
-        }
+    // MARK: - Public
+    func configure(with restaurant: Restaurant) {
+        fetchImagesForRestaurant(with: restaurant)
+        updateUI(with: restaurant)
     }
     
     static func nib() -> UINib {

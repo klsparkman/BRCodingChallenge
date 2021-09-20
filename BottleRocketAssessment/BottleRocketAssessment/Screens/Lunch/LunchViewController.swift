@@ -10,14 +10,17 @@ import UIKit
 class LunchViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Properties
+    
     var restaurants: [Restaurant] = []
     var restaurantImages: [UIImage] = []
     var selectedRestaurant: Restaurant?
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(RestaurantCollectionViewCell.nib(), forCellWithReuseIdentifier: RestaurantCollectionViewCell.identifier)
@@ -29,8 +32,8 @@ class LunchViewController: UIViewController {
         fetchRestaurants()
     }
     
-    // MARK: - Helper Functions
-    func fetchRestaurants() {
+    // MARK: - Private
+    private func fetchRestaurants() {
         RestaurantController.fetchRestaurants { result in
             switch result {
             case .success(let restaurants):
@@ -45,6 +48,7 @@ class LunchViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailVC" {
             if let destination = segue.destination as? RestaurantDetailViewController,
@@ -60,13 +64,10 @@ class LunchViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: - Actions
-    @IBAction func mapButtonTapped(_ sender: Any) {
-    }
 }
 
 // MARK: - Extensions
+
 extension LunchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -90,14 +91,12 @@ extension LunchViewController: UICollectionViewDataSource {
 }
 
 extension LunchViewController: UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if view.frame.width > 1000 {
-            return CGSize(width: view.frame.width / 2, height: 180)
+            return CGSize(width: view.frame.width / 3, height: 180)
         } else {
             return CGSize(width: view.frame.width, height: 180)
         }
     }
 }
-
-

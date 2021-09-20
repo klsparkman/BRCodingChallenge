@@ -9,12 +9,14 @@ import UIKit
 import WebKit
 
 class InternetsViewController: UIViewController, WKUIDelegate {
-
+    
     // MARK: - Properties
+    
     let textWhite = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1)
     let bannerGreen = UIColor(red: 67/255.0, green: 232/255.0, blue: 149/255.0, alpha: 1)
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -30,6 +32,7 @@ class InternetsViewController: UIViewController, WKUIDelegate {
     }
     
     // MARK: - Actions
+    
     @objc func forwardAction() {
         print("Forward button tapped")
         if webView.canGoForward {
@@ -66,7 +69,7 @@ class InternetsViewController: UIViewController, WKUIDelegate {
     
     let testBackButton = UIBarButtonItem(title: "Test Back", style: .plain, target: self, action: #selector(backAction))
     
-    // MARK: - Helper Functions
+    // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(webView)
@@ -91,5 +94,4 @@ class InternetsViewController: UIViewController, WKUIDelegate {
         navigationController?.navigationBar.barTintColor = self.bannerGreen
         navigationController?.navigationBar.tintColor = self.textWhite
     }
-
 }

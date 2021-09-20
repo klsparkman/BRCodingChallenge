@@ -9,20 +9,25 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-
+    
     // MARK: - Properties
+    
     var restaurants: [Restaurant]?
     var annotationLocations: [[String: Any]] = [[:]]
     let distanceSpan: CLLocationDistance = 25000
     
     // MARK: - Outlets
+    
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createAnnotationLocations()
     }
+    
+    // MARK: - Private
     
     private func createAnnotationLocations() {
         if let restaurants = restaurants {
@@ -47,7 +52,6 @@ class MapViewController: UIViewController {
     }
     
     private func zoomLevel(location: CLLocation) {
-//        let location = CLLocation(latitude: 31.9686, longitude: -99.9018)
         let mapCoordinates = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distanceSpan, longitudinalMeters: distanceSpan)
         mapView.setRegion(mapCoordinates, animated: true)
     }

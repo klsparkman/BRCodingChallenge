@@ -11,6 +11,7 @@ import MapKit
 class RestaurantDetailViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantCategoryLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -19,17 +20,21 @@ class RestaurantDetailViewController: UIViewController {
     @IBOutlet weak var restaurantMapView: MKMapView!
     
     // MARK: - Properties
+    
     var restaurant: Restaurant?
     let annotation = MKPointAnnotation()
     var restaurantArray: [Restaurant]?
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
     
-    func updateViews() {
+    // MARK: - Private
+    
+    private func updateViews() {
         if let restaurant = restaurant {
             let location = CLLocation(latitude: restaurant.location.lat, longitude: restaurant.location.lng)
             annotation.coordinate = CLLocationCoordinate2D(latitude: restaurant.location.lat, longitude: restaurant.location.lng)
@@ -54,6 +59,7 @@ class RestaurantDetailViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapViewFromDetail" {
             if let destination = segue.destination as? MapViewController {
@@ -61,17 +67,4 @@ class RestaurantDetailViewController: UIViewController {
             }
         }
     }
-}
-
-private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 1000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class RestaurantController {
     
-    // MARK: - Fetch restaurant function
+    // MARK: - Fetch restaurants
+    
     static func fetchRestaurants(completion: @escaping (Result<[Restaurant], RestaurantError>) -> Void) {
         guard let restaurantURL = URL(string: "https://s3.amazonaws.com/br-codingexams/restaurants.json") else {return}
         URLSession.shared.dataTask(with: restaurantURL) { data, response, error in
@@ -34,9 +35,9 @@ class RestaurantController {
         }.resume()
     }
     
-    // MARK: - Fetch restaurant images
+    // MARK: - Fetch images
+    
     static func fetchRestaurantImages(restaurant: Restaurant, completion: @escaping (Result<UIImage, RestaurantError>) -> Void) {
-        
         guard let imageURL = URL(string: restaurant.backgroundImageURL) else {return}
         
         if let dict = UserDefaults.standard.object(forKey: Constants.imageCache) as? [String:String] {
@@ -65,12 +66,13 @@ class RestaurantController {
         }.resume()
     }
     
+    // MARK: - Caching
+    
     static func storeImage(urlString: String, image: UIImage) {
         let path = NSTemporaryDirectory().appending(UUID().uuidString)
         let url = URL(fileURLWithPath: path)
         let data = image.jpegData(compressionQuality: 0.5)
         try? data?.write(to: url)
-        
         var dict = UserDefaults.standard.object(forKey: Constants.imageCache) as? [String:String]
         if dict == nil {
             dict = [String:String]()

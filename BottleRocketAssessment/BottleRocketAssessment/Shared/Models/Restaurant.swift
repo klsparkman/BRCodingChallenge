@@ -30,5 +30,3 @@ struct Restaurant: Codable {
         let lng: Double
     }
 }
-
-
