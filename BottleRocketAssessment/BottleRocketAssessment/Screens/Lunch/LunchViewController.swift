@@ -93,8 +93,8 @@ extension LunchViewController: UICollectionViewDataSource {
 extension LunchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if view.frame.width > 1000 {
-            return CGSize(width: view.frame.width / 3, height: 180)
+        if view.frame.width > 700 {
+            return CGSize(width: view.frame.width / 2.5, height: 180)
         } else {
             return CGSize(width: view.frame.width, height: 180)
         }
