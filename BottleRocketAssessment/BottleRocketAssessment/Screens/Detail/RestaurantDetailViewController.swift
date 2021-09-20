@@ -47,9 +47,9 @@ class RestaurantDetailViewController: UIViewController {
             if restaurant.contact != nil {
                 phoneNumberLabel.text = restaurant.contact!.formattedPhone
                 if restaurant.contact?.twitter != nil {
-                    twitterLabel.text = "@\(restaurant.contact!.twitter ?? "")"
+                    twitterLabel.text = "@\(restaurant.contact!.twitter ?? "No social media account available")"
                 } else if restaurant.contact?.facebookUsername != nil {
-                    twitterLabel.text = "Facebook: \( restaurant.contact?.facebookUsername ?? "")"
+                    twitterLabel.text = "Facebook: \( restaurant.contact?.facebookUsername ?? "No social media account available")"
                 }
             } else {
                 phoneNumberLabel.text = "No phone number available"

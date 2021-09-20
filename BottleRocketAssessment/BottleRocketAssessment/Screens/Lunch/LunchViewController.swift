@@ -18,21 +18,37 @@ class LunchViewController: UIViewController {
     var restaurants: [Restaurant] = []
     var restaurantImages: [UIImage] = []
     var selectedRestaurant: Restaurant?
+    private var itemsPerRow: CGFloat = 0
+    private let sectionInsets = UIEdgeInsets (
+      top: 0.0,
+      left: 0.0,
+      bottom: 0.0,
+      right: 0.0)
+
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(RestaurantCollectionViewCell.nib(), forCellWithReuseIdentifier: RestaurantCollectionViewCell.identifier)
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 120, height: 120)
-        collectionView.collectionViewLayout = layout
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = CGSize(width: 120, height: 120)
+//        collectionView.collectionViewLayout = layout
         collectionView.dataSource = self
         collectionView.delegate = self
         fetchRestaurants()
     }
     
     // MARK: - Private
+    
+//    private func constrainCollectionView() {
+//        let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+//
+//        collectionViewLayout?.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 20, right: 30)
+//
+//        collectionViewLayout?.invalidateLayout()
+//    }
+    
     private func fetchRestaurants() {
         RestaurantController.fetchRestaurants { result in
             switch result {
@@ -94,9 +110,32 @@ extension LunchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if view.frame.width > 700 {
-            return CGSize(width: view.frame.width / 2.5, height: 180)
+            return CGSize(width: view.frame.width / 2.05, height: 180)
         } else {
             return CGSize(width: view.frame.width, height: 180)
         }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        view.frame.width > 700 ? (itemsPerRow = 2) : (itemsPerRow = 1)
+//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+//        let availableWidth = view.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / itemsPerRow
+//        print("width per item: \(widthPerItem)")
+//        return CGSize(width: widthPerItem, height: 180)
+//    }
+
+    func collectionView(_ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+      }
+
+    func collectionView(_ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+      }
 }
