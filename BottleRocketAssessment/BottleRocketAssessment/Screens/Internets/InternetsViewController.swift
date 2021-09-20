@@ -34,21 +34,18 @@ class InternetsViewController: UIViewController, WKUIDelegate {
     // MARK: - Actions
     
     @objc func forwardAction() {
-        print("Forward button tapped")
         if webView.canGoForward {
             webView.goForward()
         }
     }
     
     @objc func backAction() {
-        print("Back button tapped")
         if webView.canGoBack {
             webView.goBack()
         }
     }
     
     @objc func refreshAction() {
-        print("Refresh button tapped")
         webView.reload()
     }
     
