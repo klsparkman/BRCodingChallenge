@@ -115,17 +115,6 @@ extension LunchViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: view.frame.width, height: 180)
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        view.frame.width > 700 ? (itemsPerRow = 2) : (itemsPerRow = 1)
-//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-//        let availableWidth = view.frame.width - paddingSpace
-//        let widthPerItem = availableWidth / itemsPerRow
-//        print("width per item: \(widthPerItem)")
-//        return CGSize(width: widthPerItem, height: 180)
-//    }
 
     func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
