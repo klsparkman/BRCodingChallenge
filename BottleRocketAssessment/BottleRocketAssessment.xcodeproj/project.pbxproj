@@ -117,7 +117,6 @@
 		35F75D9926F03A14009E8C97 /* BottleRocketAssessment */ = {
 			isa = PBXGroup;
 			children = (
-				35F75DCC26F03D1F009E8C97 /* Resources */,
 				35F75DCB26F03D17009E8C97 /* Screens */,
 				35F75DCA26F03D08009E8C97 /* Shared */,
 				35F75D9A26F03A14009E8C97 /* AppDelegate.swift */,
@@ -167,13 +166,6 @@
 				35F75DD726F04640009E8C97 /* Internets */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		35F75DCC26F03D1F009E8C97 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		35F75DCD26F03D38009E8C97 /* Storyboards */ = {
